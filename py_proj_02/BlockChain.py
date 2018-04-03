@@ -17,7 +17,7 @@ class BlockChain(object):       # BlockChain类用来管理链条
         self.chain = []
         self.current_transactions = []
         # 创建创世块
-        self.new_block()
+        self.new_block(previous_hash=1, proof=100)
         self.nodes = set()
 
     def new_block(self, proof, previous_hash):
@@ -158,6 +158,7 @@ def full_chain():
         'length': len(blockchain.chain)
     }
     return jsonify(response), 200
+
 
 @app.route('/nodes/register', methods=['POST'])
 def register_nodes():
