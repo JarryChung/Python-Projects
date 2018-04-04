@@ -73,7 +73,7 @@ class BlockChain(object):       # BlockChain类用来管理链条
         new_chain = None
         max_length = len(self.chain)
         for node in neighbours:
-            response = request.get('http://{node}/chain')
+            response = requests.get('http://{node}/chain')
             if response.status_code == 200:
                 length = response.json()['length']
                 chain = response.json()['chain']
@@ -124,7 +124,7 @@ def mine():
     # 给工作量证明的节点提供奖励
     # 发送者为“０”表明是新挖出的币
     blockchain.new_transactions(
-        sender = "0",
+        sender="0",
         recipient=node_identifier,
         amonut=1
     )
@@ -162,7 +162,7 @@ def full_chain():
 
 @app.route('/nodes/register', methods=['POST'])
 def register_nodes():
-    values = requests.get_json()
+    values = request.get_json()
     nodes = values.get('nodes')
     if nodes is None:
         return "Error: Please supply a valid list of nodes", 400
