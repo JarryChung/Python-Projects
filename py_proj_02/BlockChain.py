@@ -180,7 +180,7 @@ def consensus():
     replaced = blockchain.resolve_conflicts()
     if replaced:
         response = {
-            'message': "The chain was replased.",
+            'message': "The chain was replaced.",
             'new_chain': blockchain.chain
         }
     else:
