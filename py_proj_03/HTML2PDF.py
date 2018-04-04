@@ -4,7 +4,7 @@
 #
 
 import requests
-import pdfkit
+from pdfkit import *
 from bs4 import BeautifulSoup
 
 
@@ -39,8 +39,5 @@ def save_pdf(html):
             ('Accept-Encoding', 'gzip')
         ]
     }
-    pdfkit.from_file(html, 'python.pdf', options=options)
+    pdfkit.from_file(html, file_name, options=options)
 
-
-if __name__ == '__main__':
-    save_pdf()
