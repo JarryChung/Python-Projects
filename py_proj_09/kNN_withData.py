@@ -35,13 +35,12 @@ def loadDataSet():
     train_y = []
     for i in range(numSamples):
         filename = trainingFileList[i]
-        train_x[i, :] = \
-        img2vector(dataSetDir + "trainingDigits/%s" % filename)
+        train_x[i, :] = img2vector(dataSetDir + "trainingDigits/%s" % filename)
         label = int(filename.split('_')[0])
         train_y.append(label)
 
     # Step2: 获取测试集
-    print("---Getting test set...")
+    print("---Getting testing set...")
     # 要求使用test_x保存数据，test_y保存类别
     testFileList = listdir(dataSetDir + "testDigits")
     numTest = len(testFileList)
@@ -51,8 +50,7 @@ def loadDataSet():
     test_y = []
     for j in range(numTest):
         filename = testFileList[j]
-        test_x[j, :] = \
-        img2vector(dataSetDir + "testDigits/%s" % filename)
+        test_x[j, :] = img2vector(dataSetDir + "testDigits/%s" % filename)
         label = int(filename.split('_')[0])
         test_y.append(label)
 
@@ -93,9 +91,9 @@ def testHandWritingClass():
     matchCount = 0  # 用以统计分类正确的数目
     for i in range(numTestSamples):
         # 对测试集中的数据进行分类，取k=3，将得到的结果与标签对比，如果相等则分类正确的数目加一
-        classifierResult = kNNClassify(test_x[i], train_x[i], train_y[i], 3)
+        classifierResult = kNNClassify(test_x[i], train_x, train_y, 3)
         print("the classifier came back with: %d, the real answer is: %d" % (classifierResult[0][0], test_y[i]))
-        if classifierResult[0][0] == train_y[i]:
+        if classifierResult[0][0] == test_y[i]:
             matchCount += 1.0
 
     # 所有测试集数据都跑完后计算分类的正确率，保存到acuuracy变量
@@ -107,3 +105,6 @@ def testHandWritingClass():
 
 if __name__ == "__main__":
     testHandWritingClass()
+
+
+# Input 'python3 kNN_withData.py' to run this program
