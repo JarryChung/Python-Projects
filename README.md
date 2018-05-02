@@ -23,4 +23,13 @@
 > 基于百度AI的文字识别(未实现)
 
 ## py_proj_08
-> 
+> 朴素贝叶斯
+
+## py_proj_09
+> KNN
+
+## py_proj_10
+> Python操作数据库
+
+## py_proj_11
+> K-means(K均值聚类算法)
